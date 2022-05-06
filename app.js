@@ -86,6 +86,7 @@ useAxios(10);
 
 const getDadJoke = async()=>{
     try{
+        //config: is an object key:value pair, value is in brackets because it too is a key:value pair required by the API docs. 
     const config = {headers: {Accept: 'application/json'}};
     const res = await axios.get("https://icanhazdadjoke.com", config);
     return res.data.joke;
