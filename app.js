@@ -20,42 +20,65 @@ console.log("How to work with APIs");
 // req.open("GET", "http://swapi.dev/api/people/1/");
 // req.send();
 
+
 //FETCH
-fetch("http://swapi.dev/api/people/2/")
-  .then((res) => {
-    console.log("1st fetch resolved", res);
-    return res.json();
-  })
-  .then((data) => {
-    console.log(data);
-    return fetch("http://swapi.dev/api/people/3/");
-  })
-  .then((res) => {
-    console.log("2nd fetch resolved");
-    return res.json();
-  })
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((e) => {
-    console.log("ERROR", e);
-  });
+// fetch("http://swapi.dev/api/people/2/")
+//   .then((res) => {
+//     console.log("1st fetch resolved", res);
+//     return res.json();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     return fetch("http://swapi.dev/api/people/3/");
+//   })
+//   .then((res) => {
+//     console.log("2nd fetch resolved");
+//     return res.json();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((e) => {
+//     console.log("ERROR", e);
+//   });
 
-//ASYNC
+// //ASYNC
 
-const loadStarWars = async () => {
-  try {
-    const res = await fetch("http://swapi.dev/api/people/4/");
-    const data =  await res.json();
-    console.log(data);
-    const res1 = await fetch("http://swapi.dev/api/people/5/");
-    const data1 = await res1.json();
-    console.log(data1);
-    const res2 = await fetch("http://swapi.dev/api/people/6/");
-    const data2 = await res2.json();
-    console.log(data2);
-  } catch (e) {
-    console.log("ERROR", e);
-  }
-};
-loadStarWars();
+// const loadStarWars = async () => {
+//   try {
+//     const res = await fetch("http://swapi.dev/api/people/4/");
+//     const data =  await res.json();
+//     console.log(data);
+//     const res1 = await fetch("http://swapi.dev/api/people/5/");
+//     const data1 = await res1.json();
+//     console.log(data1);
+//     const res2 = await fetch("http://swapi.dev/api/people/6/");
+//     const data2 = await res2.json();
+//     console.log(data2);
+//   } catch (e) {
+//     console.log("ERROR", e);
+//   }
+// };
+// loadStarWars();
+
+//AXIOS
+axios.get("http://swapi.dev/api/people/7/")
+.then((res)=>{
+    console.log('Response', res.data);
+})
+.catch((e)=>{
+    console.log("error", e);
+})
+
+const useAxios = async(id)=>{
+    try{
+        const res = await axios.get(`http://swapi.dev/api/people/${id}`);
+        console.log("Response:",res.data);
+    }
+    catch(e){
+        console.log("error",e);
+    }
+}
+useAxios(8);
+useAxios(9);
+useAxios(10);
