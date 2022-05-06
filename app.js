@@ -82,3 +82,30 @@ const useAxios = async(id)=>{
 useAxios(8);
 useAxios(9);
 useAxios(10);
+
+
+const getDadJoke = async()=>{
+    try{
+    const config = {headers: {Accept: 'application/json'}};
+    const res = await axios.get("https://icanhazdadjoke.com", config);
+    return res.data.joke;
+    console.log(res.data.joke);
+    }
+    catch(e){
+        console.log('Error:', e);
+    }
+}
+getDadJoke();
+
+
+
+const jokeButton = document.querySelector("button");
+const jokeList = document.querySelector('#jokes');
+
+const addJoke = async()=>{
+    const newJoke = await getDadJoke();
+    const jokeLi = document.createElement('li');
+    jokeLi.innerText = newJoke;
+   jokeList.append(jokeLi);
+}
+jokeButton.addEventListener('click', addJoke);
