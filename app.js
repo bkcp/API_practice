@@ -46,7 +46,7 @@ fetch("http://swapi.dev/api/people/2/")
 const loadStarWars = async () => {
   try {
     const res = await fetch("http://swapi.dev/api/people/4/");
-    const data = await res.json();
+    const data =  await res.json();
     console.log(data);
     const res1 = await fetch("http://swapi.dev/api/people/5/");
     const data1 = await res1.json();
